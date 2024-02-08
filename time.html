@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024高考倒计时</title>
+    <link rel="icon" href="./image/index/favicon.ico">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-image: url('image/index/2024.jpg');
+            background-size: cover;
+        }
+
+        #countdown {
+            font-size: 36px; /* 减小倒计时字体大小 */
+            color: white;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+        }
+
+        #countdown-label {
+            font-size: 72px; /* 添加文字的字体大小 */
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown-label">距离2024年高考还剩</div>
+    <div id="countdown"></div>
+
+    <script>
+        const targetDate = new Date("2024-06-07T00:00:00Z").getTime();
+
+        function updateCountdown() {
+            const currentDate = new Date().getTime();
+            const timeLeft = targetDate - currentDate;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
